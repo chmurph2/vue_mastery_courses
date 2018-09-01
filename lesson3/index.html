@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" charset="utf-8">
+  <title>Product App</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div class="nav-bar"></div>
+
+  <div id="app">
+    <div class="product">
+
+      <div class="product-image">
+        <img :src="image" />
+      </div>
+
+      <div class="product-info">
+        <h1>{{ product }}</h1>
+        <span v-show="onSale">On Sale!</span>
+        <p v-if="inventory > 10">Plenty of stock! {{ inventory }} available.</p>
+        <p v-else-if="inventory > 0 && inventory < 10">Almost sold out! {{inventory}} available.</p>
+        <p v-else>Out of Stock</p>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
+
+<script src="https://unpkg.com/vue"></script>
+<script src="main.js"></script>

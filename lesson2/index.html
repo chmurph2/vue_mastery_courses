@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" charset="utf-8">
+  <title>Product App</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div class="nav-bar"></div>
+
+  <div id="app">
+    <div class="product">
+
+      <div class="product-image">
+        <img v-bind:src="image" v-bind:alt="altText" :title="altText" />
+      </div>
+
+      <div class="product-info">
+        <h1>{{ product }}</h1>
+      </div>
+
+      <div class="product-link">
+        <a :href="custominkSocksUrl" target="_blank">Buy socks from Custom Ink!</a>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
+
+
+
+<script src="https://unpkg.com/vue"></script>
+<script src="main.js"></script>
