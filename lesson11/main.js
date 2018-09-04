@@ -1,3 +1,5 @@
+var eventBus = new Vue()
+
 Vue.component('product', {
   props: {
     premium: {
@@ -16,11 +18,8 @@ Vue.component('product', {
         <h1>{{ title }}</h1>
         <p v-if="inStock">In Stock</p>
         <p v-else> Out of Stock</p>
-        <p>Shipping: {{ shipping }}</p>
 
-        <ul>
-          <li v-for="detail in details">{{ detail }}</li>
-        </ul>
+        <info-tabs :shipping="shipping" :details="details"></info-tabs>
 
         <div class="color-box"
           v-for="(variant, index) in variants"
@@ -180,15 +179,15 @@ Vue.component('product-tabs', {
   template: `
     <div>
 
-      <div>
-        <span class="tab"
-          v-for="(tab, index) in tabs" :key="index"
+      <ul>
+        <span class="tabs"
+          v-for="(tab, index) in tabs" :key="tab"
           @click="selectedTab = tab"
           :class="{ activeTab: selectedTab === tab }"
         >
           {{ tab }}
         </span>
-      </div>
+      </ul>
 
       <div v-show="selectedTab === 'Reviews'">
         <p v-if="!reviews.length">There are no reviews yet</p>
@@ -214,7 +213,47 @@ Vue.component('product-tabs', {
   }
 })
 
-var eventBus = new Vue()
+Vue.component('info-tabs', {
+    props: {
+      shipping: {
+        required: true
+      },
+      details: {
+        type: Array,
+        required: true
+      }
+    },
+    template: `
+      <div>
+
+        <ul>
+          <span class="tabs"
+                :class="{ activeTab: selectedTab === tab }"
+                v-for="(tab, index) in tabs"
+                @click="selectedTab = tab"
+                :key="tab"
+          >{{ tab }}</span>
+        </ul>
+
+        <div v-show="selectedTab === 'Shipping'">
+          <p>{{ shipping }}</p>
+        </div>
+
+        <div v-show="selectedTab === 'Details'">
+          <ul>
+            <li v-for="detail in details">{{ detail }}</li>
+          </ul>
+        </div>
+
+      </div>
+    `,
+    data() {
+      return {
+        tabs: ['Shipping', 'Details'],
+        selectedTab: 'Shipping'
+      }
+    }
+  })
 
 var app = new Vue({
   el: '#app',
