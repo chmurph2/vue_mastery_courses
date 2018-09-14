@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import EventList from './views/EventList.vue'
 import EventShow from './views/EventShow.vue'
 import EventCreate from './views/EventCreate.vue'
+import User from './views/User.vue'
 
 Vue.use(Router)
 
@@ -12,7 +13,6 @@ difference is that when using Vue Router, it’s a best practice to put the
 components (AKA pages) that get loaded by Vue Router in the /views directory.
 You then keep the modular (reusable) components in your /components directory.
 */
-
 export default new Router({
   routes: [
     {
@@ -29,6 +29,12 @@ export default new Router({
       path: '/event/create',
       name: 'event-create',
       component: EventCreate
+    },
+    {
+      path: '/user/:username',
+      name: 'user',
+      component: User,
+      props: true
     }
   ]
 })
