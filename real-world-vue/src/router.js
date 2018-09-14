@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
-import About from './views/About.vue'
+import EventList from './views/EventList.vue'
+import EventShow from './views/EventShow.vue'
+import EventCreate from './views/EventCreate.vue'
 
 Vue.use(Router)
 
@@ -16,18 +17,18 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home
+      name: 'event-list',
+      component: EventList
     },
     {
-      path: '/about-us',
-      name: 'about',
-      component: About,
-      alias: '/about'
+      path: '/event',
+      name: 'event-show',
+      component: EventShow
+    },
+    {
+      path: '/event/create',
+      name: 'event-create',
+      component: EventCreate
     }
-    // {
-    //   path: 'about',
-    //   redirect: { name: 'about'}
-    // }
   ]
 })
