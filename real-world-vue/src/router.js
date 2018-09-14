@@ -3,7 +3,6 @@ import Router from 'vue-router'
 import EventList from './views/EventList.vue'
 import EventShow from './views/EventShow.vue'
 import EventCreate from './views/EventCreate.vue'
-import User from './views/User.vue'
 import FileNotFound from './views/FileNotFound.vue'
 
 Vue.use(Router)
@@ -33,12 +32,6 @@ export default new Router({
       path: '/event/:id',
       name: 'event-show',
       component: EventShow,
-      props: true
-    },
-    {
-      path: '/user/:username',
-      name: 'user',
-      component: User,
       props: true
     },
     {
