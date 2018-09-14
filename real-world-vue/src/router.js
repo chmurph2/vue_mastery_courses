@@ -4,6 +4,7 @@ import EventList from './views/EventList.vue'
 import EventShow from './views/EventShow.vue'
 import EventCreate from './views/EventCreate.vue'
 import User from './views/User.vue'
+import FileNotFound from './views/FileNotFound.vue'
 
 Vue.use(Router)
 
@@ -14,6 +15,9 @@ components (AKA pages) that get loaded by Vue Router in the /views directory.
 You then keep the modular (reusable) components in your /components directory.
 */
 export default new Router({
+  // use the browser history.pushState API to change the URL without reloading the page
+  // to support this in production: https://router.vuejs.org/guide/essentials/history-mode.html#example-server-configurations
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -35,6 +39,10 @@ export default new Router({
       name: 'user',
       component: User,
       props: true
+    },
+    {
+      path: '*',
+      component: FileNotFound // support 404s in history mode
     }
   ]
 })
