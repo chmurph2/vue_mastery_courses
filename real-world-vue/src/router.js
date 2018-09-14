@@ -20,9 +20,14 @@ export default new Router({
       component: Home
     },
     {
-      path: '/about',
+      path: '/about-us',
       name: 'about',
-      component: About
+      component: About,
+      alias: '/about'
     }
+    // {
+    //   path: 'about',
+    //   redirect: { name: 'about'}
+    // }
   ]
 })
